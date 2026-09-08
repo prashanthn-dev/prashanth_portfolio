@@ -5,7 +5,7 @@ export const site = {
   email: 'nprashanth831@gmail.com',
   phone: '9353758819',
   location: 'Puttur, Karnataka',
-  githubUrl: 'https://github.com/Prashanthptr07',
+  githubUrl: 'https://github.com/prashanthn-dev',
   linkedinUrl: 'https://www.linkedin.com/in/prashanth-puttur-4774b8412/',
 
   navLinks: [
