@@ -6,8 +6,6 @@ export default function Hero() {
 
   const visualRef = useRef<HTMLDivElement>(null);
   const resumeRef = useMagnetic<HTMLAnchorElement>(0.25);
-  const workRef = useRef<HTMLAnchorElement>(null);
-  const talkRef = useRef<HTMLAnchorElement>(null);
 
   const RESUME_URL = '/prashanth.pdf';
 
@@ -15,14 +13,6 @@ export default function Hero() {
     const t = setTimeout(() => setMounted(true), 100);
     return () => clearTimeout(t);
   }, []);
-
-  const scrollTo = (id: string) => (e: MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-
-    document.querySelector(id)?.scrollIntoView({
-      behavior: 'smooth',
-    });
-  };
 
   useEffect(() => {
     const el = visualRef.current;
@@ -91,11 +81,11 @@ export default function Hero() {
 
             <h1 className="font-display font-bold leading-[0.85] tracking-tightest">
               <span
-  style={step(0.35)}
-  className="block text-[clamp(3.5rem,5.5vw,6.5rem)] leading-none text-paper-50"
->
-  PRASHANTH
-</span>
+                style={step(0.35)}
+                className="block text-[clamp(3.5rem,5.5vw,6.5rem)] leading-none text-paper-50"
+              >
+                PRASHANTH
+              </span>
             </h1>
 
             <p
@@ -118,31 +108,26 @@ export default function Hero() {
               style={step(1)}
               className="mt-10 flex flex-wrap items-center gap-4"
             >
-              <a
-                ref={workRef}
-                href="#work"
-                onClick={scrollTo('#work')}
-                className="group inline-flex items-center gap-2 rounded-full bg-accent-400 px-7 py-3.5 font-mono text-xs font-medium uppercase tracking-[0.15em] text-ink-950 transition-colors duration-300 hover:bg-accent-300"
-              >
-                View My Work
-
-                <span className="transition-transform duration-300 group-hover:translate-x-1 group-hover:translate-y-1">
-                  ↘
-                </span>
-              </a>
-
-              <a
-                ref={talkRef}
-                href="#contact"
-                onClick={scrollTo('#contact')}
-                className="group inline-flex items-center gap-2 rounded-full border border-ink-600 px-7 py-3.5 font-mono text-xs font-medium uppercase tracking-[0.15em] text-paper-100 transition-colors duration-300 hover:border-accent-400 hover:text-accent-400"
-              >
-                Let's Talk
-
-                <span className="text-accent-400 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                  ↗
-                </span>
-              </a>
+              <div className="relative group inline-block">
+                {/* Glowing Background */}
+                <div className="absolute -inset-1 rounded-full bg-red-600 opacity-40 blur-lg transition-opacity duration-300 group-hover:opacity-80" />
+                
+                {/* Main Button */}
+                <a
+                  ref={resumeRef}
+                  href={RESUME_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download="Prashanth_Resume.pdf"
+                  className="relative inline-flex items-center justify-center gap-3 rounded-full bg-red-600 px-10 py-5 font-mono text-sm font-bold uppercase tracking-[0.2em] text-white transition-all duration-300 hover:scale-105 hover:bg-red-700"
+                >
+                  Resume
+                  
+                  <span className="transition-transform duration-300 group-hover:translate-y-1">
+                    ↓
+                  </span>
+                </a>
+              </div>
             </div>
 
             <div
@@ -158,7 +143,7 @@ export default function Hero() {
           </div>
 
           {/* Right: Abstract browser mockup */}
-         <div className="lg:col-span-5 relative z-0" style={step(0.6)}>
+          <div className="lg:col-span-5 relative z-0" style={step(0.6)}>
             <div
               ref={visualRef}
               className="relative mx-auto w-full max-w-md transition-transform duration-200 ease-out preserve-3d"
@@ -363,4 +348,4 @@ export default function Hero() {
       </div>
     </section>
   );
-}                    
+}

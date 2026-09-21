@@ -6,7 +6,7 @@ export const site = {
   phone: '9353758819',
   location: 'Puttur, Karnataka',
   githubUrl: 'https://github.com/prashanthn-dev',
-  linkedinUrl: 'https://www.linkedin.com/in/prashanth-puttur-4774b8412/',
+  linkedinUrl: 'https://www.linkedin.com/in/prashanth-4774b8412/',
 
   navLinks: [
     { label: 'About', href: '#about' },
